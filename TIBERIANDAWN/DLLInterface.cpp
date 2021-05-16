@@ -496,6 +496,7 @@ void On_Achievement_Event(const HouseClass* player_ptr, const char *achievement_
 **************************************************************************************************/
 extern "C" __declspec(dllexport) unsigned int __cdecl CNC_Version(unsigned int version_in)
 {
+	CCDebugString("C&C95 - invoked CNC_Version\n");
 	// Unreferenced, but potentially useful to know which version the server is expecting
 	version_in;
 
@@ -518,6 +519,7 @@ extern "C" __declspec(dllexport) unsigned int __cdecl CNC_Version(unsigned int v
 **************************************************************************************************/
 extern "C" __declspec(dllexport) void __cdecl CNC_Init(const char *command_line, CNC_Event_Callback_Type event_callback)
 {
+	CCDebugString("C&C95 - invoked CNC_Init\n");
 	DLLExportClass::Set_Content_Directory(NULL);
 	
 	DLL_Startup(command_line);
@@ -542,6 +544,7 @@ extern "C" __declspec(dllexport) void __cdecl CNC_Init(const char *command_line,
 **************************************************************************************************/
 void DLL_Shutdown(void)
 {
+	CCDebugString("C&C95 - invoked DLL_Shutdown\n");
 	DLLExportClass::Shutdown();
 }
 
@@ -562,6 +565,7 @@ void DLL_Shutdown(void)
 **************************************************************************************************/
 extern "C" __declspec(dllexport) void __cdecl CNC_Config(const CNCRulesDataStruct& rules)
 {
+	CCDebugString("C&C95 - invoked CNC_Config\n");
 	DLLExportClass::Config(rules);
 }
 
@@ -1030,6 +1034,7 @@ void GlyphX_Assign_Houses(void)
 **************************************************************************************************/
 extern "C" __declspec(dllexport) bool __cdecl CNC_Start_Instance(int scenario_index, int build_level, const char *faction, const char *game_type, const char *content_directory, int sabotaged_structure, const char *override_map_name)
 {
+	CCDebugString("C&C95 - invoked CNC_Start_Instance\n");
 	return CNC_Start_Instance_Variation(scenario_index, (int)SCEN_VAR_NONE, (int)SCEN_DIR_EAST, build_level, faction, game_type, content_directory, sabotaged_structure, override_map_name);
 }
 
@@ -1182,6 +1187,7 @@ extern "C" __declspec(dllexport) void __cdecl CNC_Set_Home_Cell(int x, int y, ui
 **************************************************************************************************/
 extern "C" __declspec(dllexport) bool __cdecl CNC_Start_Instance_Variation(int scenario_index, int scenario_variation, int scenario_direction, int build_level, const char *faction, const char *game_type, const char *content_directory, int sabotaged_structure, const char *override_map_name)
 {
+	CCDebugString("C&C95 - invoked CNC_Start_Instance_Variation\n");
 	if (game_type == NULL) {
 		return false;
 	}
@@ -1308,6 +1314,7 @@ extern "C" __declspec(dllexport) bool __cdecl CNC_Start_Instance_Variation(int s
 extern "C" __declspec(dllexport) bool __cdecl CNC_Start_Custom_Instance(const char* content_directory, const char* directory_path, 
 	const char* scenario_name, int build_level, bool multiplayer)
 {
+	CCDebugString("C&C95 - invoked CNC_Start_Custom_Instance\n");
 	if (content_directory == NULL) {
 		return false;
 	}
@@ -1469,6 +1476,7 @@ extern "C" __declspec(dllexport) bool __cdecl CNC_Advance_Instance(uint64 player
 	InMainLoop = true;
 	
 	if (Frame <= 10) {		// Don't spam forever, but useful to know that we actually started advancing
+		CCDebugString("C&C95 - invoked CNC_Advance_Instance\n");
 		GlyphX_Debug_Print("CNC_Advance_Instance - TD");
 	}
 
@@ -1699,6 +1707,7 @@ extern "C" __declspec(dllexport) bool __cdecl CNC_Advance_Instance(uint64 player
 **************************************************************************************************/
 extern "C" __declspec(dllexport) bool __cdecl CNC_Save_Load(bool save, const char *file_path_and_name, const char *game_type)
 {
+	CCDebugString("C&C95 - invoked CNC_Save_Load\n");
 	bool result = false;
 
 	if (save) {

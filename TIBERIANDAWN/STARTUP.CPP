@@ -161,6 +161,7 @@ BOOL WINAPI DllMain(HINSTANCE instance, unsigned int fdwReason, void *lpvReserve
 
 int DLL_Startup(const char * command_line_in)
 {
+	CCDebugString("C&C95 - invoked DLL_Startup\n");
 	RunningAsDLL = true;
 	int command_show = SW_HIDE;
 	HINSTANCE instance = ProgramInstance;

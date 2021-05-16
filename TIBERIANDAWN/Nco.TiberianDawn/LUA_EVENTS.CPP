@@ -14,7 +14,8 @@ static auto LUA_EVENTS = new const char* [LUA_EVENT_COUNT]
 {
     ON_SCENARIO_START_EVENT,
     ON_SAVE_LOAD_EVENT,
-    ON_GAME_TICK_EVENT
+    ON_GAME_TICK_EVENT,
+        ON_CAN_BUILD_EVENT
 };
 
 static void FireLuaEvent(const char* name, const char* argumentFormat = "nil", ...)
@@ -73,6 +74,17 @@ void OnScenarioLoad(char* name)
         name
     );
 }
+
+// sync messages
+void OnCanBuild(const char* type, const char* playerHouse)
+{
+    FireLuaEvent(
+        ON_CAN_BUILD_EVENT,
+        "'%s', '%s'",
+        type, playerHouse
+    );
+}
+
 
 void OnSaveLoad(const char* playerHouse, unsigned int scenarioNumber)
 {
