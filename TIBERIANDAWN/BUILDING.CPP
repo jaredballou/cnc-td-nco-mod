@@ -95,6 +95,7 @@
  * - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
 #include "function.h"
+#include "LuaHooks.h"
 
 /*
 ** New sidebar for GlyphX multiplayer. ST - 3/26/2019 12:24PM
@@ -1574,6 +1575,7 @@ bool BuildingClass::Unlimbo(COORDINATE coord, DirType dir)
  *=============================================================================================*/
 ResultType BuildingClass::Take_Damage(int & damage, int distance, WarheadType warhead, TechnoClass * source)
 {
+	HookEvent_ObjectTakeDamage(this, damage, distance, warhead, source);
 	Validate();
 	ResultType res = RESULT_NONE;
 	int shakes;
@@ -1657,21 +1659,24 @@ ResultType BuildingClass::Take_Damage(int & damage, int distance, WarheadType wa
 				**	remembering of this fact. The finale uses this information to
 				**	play the correct movie.
 				*/
-				if (*this == STRUCT_TEMPLE && warhead == WARHEAD_PB) {
-					TempleIoned = true;
+				if (*this == STRUCT_TEMPLE) {
+					if (warhead == WARHEAD_PB) {
+						TempleIoned = true;
+						LogDebug("Temple Ioned TRUE");
 
-					/*
-					** Maybe trigger an achivement if the structure is owned by an AI house in campaign mode. ST - 11/14/2019 1:53PM
-					*/
-					if (GameToPlay == GAME_NORMAL && !House->IsHuman && source && source->House && source->House->IsHuman) {
-						TechnoTypeClass const *object_type = Techno_Type_Class();
-						if (object_type) {
-							On_Achievement_Event(source->House, "ION_DESTROYS_TEMPLE", object_type->IniName);
-						}			
+						/*
+						** Maybe trigger an achivement if the structure is owned by an AI house in campaign mode. ST - 11/14/2019 1:53PM
+						*/
+						if (GameToPlay == GAME_NORMAL && !House->IsHuman && source && source->House && source->House->IsHuman) {
+							TechnoTypeClass const *object_type = Techno_Type_Class();
+							if (object_type) {
+								On_Achievement_Event(source->House, "ION_DESTROYS_TEMPLE", object_type->IniName);
+							}			
+						}
+					} else {
+						TempleIoned = false;
+						LogDebug("Temple Ioned FALSE");
 					}
-
-				} else {
-					TempleIoned = false;
 				}
 				
 				if (House) {

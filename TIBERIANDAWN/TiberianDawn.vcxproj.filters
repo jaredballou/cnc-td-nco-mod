@@ -829,6 +829,9 @@
     <ClInclude Include="Nco.TiberianDawn\enhancement_keys.h">
       <Filter>Source Files\Nco.TiberianDawn\Rules</Filter>
     </ClInclude>
+    <ClInclude Include="LuaHooks.h">
+      <Filter>Source Files\Nco.TiberianDawn</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AADATA.CPP">
@@ -1437,6 +1440,9 @@
     </ClCompile>
     <ClCompile Include="Nco.TiberianDawn\enhancement_keys.cpp">
       <Filter>Source Files\Nco.TiberianDawn\Rules</Filter>
+    </ClCompile>
+    <ClCompile Include="LuaHooks.cpp">
+      <Filter>Source Files\Nco.TiberianDawn</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

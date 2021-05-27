@@ -416,6 +416,7 @@
     <ClInclude Include="LIST.H" />
     <ClInclude Include="LOADDLG.H" />
     <ClInclude Include="LOGIC.H" />
+    <ClInclude Include="LuaHooks.h" />
     <ClInclude Include="MAP.H" />
     <ClInclude Include="MAPEDIT.H" />
     <ClInclude Include="MEMCHECK.H" />
@@ -627,6 +628,7 @@
     <ClCompile Include="LIST.CPP" />
     <ClCompile Include="LOADDLG.CPP" />
     <ClCompile Include="LOGIC.CPP" />
+    <ClCompile Include="LuaHooks.cpp" />
     <ClCompile Include="MAP.CPP" />
     <ClCompile Include="MAPEDDLG.CPP" />
     <ClCompile Include="MAPEDIT.CPP" />

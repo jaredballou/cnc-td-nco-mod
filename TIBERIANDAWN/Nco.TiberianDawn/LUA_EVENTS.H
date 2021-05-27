@@ -15,6 +15,7 @@ void OnCanBuild(const char* type, const char* playerHouse);
 void OnScenarioLoad(char* name);
 
 void OnSaveLoad(const char* playerHouse, unsigned int scenarioNumber);
+void OnCanBuild(const char* type, const char* playerHouse);
 
 // async events
 void OnGameTick();

@@ -94,6 +94,7 @@
  * - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
 #include	"function.h"
+#include "LuaHooks.h"
 
 /*
 ** This contains the value of the Virtual Function Table Pointer
@@ -883,6 +884,7 @@ bool UnitClass::Unlimbo(COORDINATE coord, DirType dir)
  *=============================================================================================*/
 ResultType UnitClass::Take_Damage(int & damage, int distance, WarheadType warhead, TechnoClass * source)
 {
+	HookEvent_ObjectTakeDamage(this, damage, distance, warhead, source);
 	Validate();
 	ResultType res = RESULT_NONE;
 

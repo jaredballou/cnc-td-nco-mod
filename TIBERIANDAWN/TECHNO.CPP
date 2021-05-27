@@ -112,6 +112,7 @@
  * - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
 #include	"function.h"
+#include "LuaHooks.h"
 
 
 /***************************************************************************
@@ -3191,6 +3192,7 @@ int TechnoTypeClass::Max_Passengers(void) const
  *=============================================================================================*/
 void TechnoClass::Record_The_Kill(TechnoClass * source)
 {
+	HookEvent_ObjectDestroyed(this, source);
 	/*
 	**	Handle any trigger event associated with this object.
 	*/

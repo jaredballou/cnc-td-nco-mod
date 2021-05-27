@@ -76,6 +76,7 @@
  * - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
 #include "function.h"
+#include "LuaHooks.h"
 
 
 /*
@@ -480,7 +481,6 @@ bool ObjectClass::Can_Repair(void) const
 {
 	return(false);
 }
-
 
 /***********************************************************************************************
  * ObjectClass::Can_Demolish -- Queries whether this object can be sold back.                  *

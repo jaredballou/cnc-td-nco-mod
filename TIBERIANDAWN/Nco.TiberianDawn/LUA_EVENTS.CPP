@@ -8,14 +8,14 @@
 
 static auto FIRE_EVENT_FORMAT = "Nco.Events.fire('%s', %s)";
 static const auto MAX_EVENT_ARGS_LENGTH = 1024;
-static const auto LUA_EVENT_COUNT = 3u;
+static const auto LUA_EVENT_COUNT = 4u;
 
 static auto LUA_EVENTS = new const char* [LUA_EVENT_COUNT]
 {
     ON_SCENARIO_START_EVENT,
     ON_SAVE_LOAD_EVENT,
     ON_GAME_TICK_EVENT,
-        ON_CAN_BUILD_EVENT
+    ON_CAN_BUILD_EVENT
 };
 
 static void FireLuaEvent(const char* name, const char* argumentFormat = "nil", ...)

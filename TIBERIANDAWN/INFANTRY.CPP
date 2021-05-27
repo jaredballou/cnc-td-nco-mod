@@ -79,6 +79,8 @@
  * - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
 #include	"function.h"
+#include "LuaHooks.h"
+
 
 
 int const InfantryClass::HumanShape[32] = {0,0,7,7,7,7,6,6,6,6,5,5,5,5,5,4,4,4,3,3,3,3,2,2,2,2,1,1,1,1,1,0};
@@ -387,6 +389,7 @@ void InfantryClass::operator delete(void *ptr)
  *=============================================================================================*/
 ResultType InfantryClass::Take_Damage(int & damage, int distance, WarheadType warhead, TechnoClass * source)
 {
+	HookEvent_ObjectTakeDamage(this, damage, distance, warhead, source);
 	Validate();
 	ResultType res = RESULT_NONE;
 

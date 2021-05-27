@@ -46,6 +46,7 @@
  * - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
 #include	"function.h"
+#include "LuaHooks.h"
 
 #define	GRAVITY	3
 

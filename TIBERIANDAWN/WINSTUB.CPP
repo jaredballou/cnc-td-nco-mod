@@ -569,7 +569,7 @@ void CCDebugString (char *string)
 		LogDebug("CCDebugString => %s", string);
 	}
 
-#if (0)
+#if (1)
 
 	char outstr[256];
 

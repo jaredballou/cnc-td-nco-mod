@@ -46,6 +46,14 @@ class AbstractTypeClass;
 class AbstractClass
 {
 	public:
+		/*
+		**	This specifies the type of object and the unique ID number
+		**	associated with it. The ID number happens to match the index into
+		**	the object heap appropriate for this object type.
+		*/
+		RTTIType RTTI;
+		int ID;
+		RTTIType What_Am_I(void) const { return(RTTI); };
 
 		/*
 		**	The coordinate location of the unit. For vehicles, this is the center

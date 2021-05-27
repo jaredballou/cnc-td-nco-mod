@@ -239,7 +239,7 @@ class DisplayClass: public MapClass
 		**	then this flag is true. In such a state, normal movement and combat orders
 		**	are preempted.
 		*/
-		unsigned IsRepairMode:1;
+		unsigned IsRepairMode : 1;
 
 		/*
 		**	If the player is currently in "sell back" mode, then this flag will be

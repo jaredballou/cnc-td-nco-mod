@@ -387,7 +387,7 @@ class SidebarClass: public PowerClass
 		bool  Scroll(bool up, int column);
 		int  Which_Column(RTTIType type);
 
-		unsigned IsRepairActive:1;
+		unsigned IsRepairActive : 1;
 		unsigned IsUpgradeActive:1;
 		unsigned IsDemolishActive:1;
 };

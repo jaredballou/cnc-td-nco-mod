@@ -428,6 +428,7 @@ CCDebugString (tempbuf);
 		**	Update the archive target for this building.
 		*/
 		case ARCHIVE:
+			CCDebugString("C&C95 - ARCHIVE packet received\n");
 			techno = As_Techno(Data.NavCom.Whom);
 			if (techno && techno->IsActive) {
 				techno->ArchiveTarget = Data.NavCom.Where;
@@ -438,6 +439,7 @@ CCDebugString (tempbuf);
 		**	Make or break alliance.
 		*/
 		case ALLY:
+			CCDebugString("C&C95 - ALLY packet received\n");
 			house = Houses.Raw_Ptr(Data.General.Value);
 			if (Houses.Raw_Ptr(ID)->Is_Ally(house)) {
 				Houses.Raw_Ptr(ID)->Make_Enemy((HousesType)Data.General.Value);
@@ -450,7 +452,7 @@ CCDebugString (tempbuf);
 		**	Special self destruct action requested. This is active in the multiplayer mode.
 		*/
 		case DESTRUCT:
-CCDebugString ("C&C95 - Resignation packet received\n");
+			CCDebugString ("C&C95 - Resignation packet received\n");
 			Houses.Raw_Ptr(ID)->Flag_To_Die();
 			Houses.Raw_Ptr(ID)->Resigned = true;
 			break;
@@ -461,6 +463,7 @@ CCDebugString ("C&C95 - Resignation packet received\n");
 		**	game play, then all players are informed that options have changed.
 		*/
 		case SPECIAL:
+			CCDebugString("C&C95 - SPECIAL packet received\n");
 			{
 				Special = Data.Options.Data;
 				HouseClass * house = Houses.Raw_Ptr(ID);
@@ -477,7 +480,7 @@ CCDebugString ("C&C95 - Resignation packet received\n");
 		**	player clicking the repair wrench on a building.
 		*/
 		case REPAIR:
-CCDebugString ("C&C95 - Repair packet received\n");
+			CCDebugString ("C&C95 - Repair packet received\n");
 			techno = As_Techno(Data.Target.Whom);
 			if (techno && techno->IsActive) {
 				techno->Repair(-1);
@@ -489,7 +492,7 @@ CCDebugString ("C&C95 - Repair packet received\n");
 		**	sell animating cursor over the building or unit.
 		*/
 		case SELL:
-CCDebugString ("C&C95 - Sell packet received\n");
+			CCDebugString ("C&C95 - Sell packet received\n");
 			techno = As_Techno(Data.Target.Whom);
 			if (techno && techno->IsActive && techno->House == Houses.Raw_Ptr(ID)) {
 				techno->Sell_Back(-1);
@@ -538,7 +541,7 @@ CCDebugString ("C&C95 - Sell packet received\n");
 		**	exact factory and real object pointer to use.
 		*/
 		case PLACE:
-CCDebugString ("C&C95 - Place packet received\n");
+			CCDebugString ("C&C95 - Place packet received\n");
 			Houses.Raw_Ptr(ID)->Place_Object(Data.Place.Type, Data.Place.Cell);
 			break;
 
@@ -548,7 +551,7 @@ CCDebugString ("C&C95 - Place packet received\n");
 		**	what factory to use.
 		*/
 		case PRODUCE:
-CCDebugString ("C&C95 - Produce packet received\n");
+			CCDebugString ("C&C95 - Produce packet received\n");
 			Houses.Raw_Ptr(ID)->Begin_Production(Data.Specific.Type, Data.Specific.ID);
 			break;
 
@@ -557,7 +560,7 @@ CCDebugString ("C&C95 - Produce packet received\n");
 		**	object type, the factory can be inferred.
 		*/
 		case SUSPEND:
-CCDebugString ("C&C95 - Suspend packet received\n");
+			CCDebugString ("C&C95 - Suspend packet received\n");
 			Houses.Raw_Ptr(ID)->Suspend_Production(Data.Specific.Type);
 			break;
 
@@ -566,7 +569,7 @@ CCDebugString ("C&C95 - Suspend packet received\n");
 		**	object type. From the object type, the exact factory can be inferred.
 		*/
 		case ABANDON:
-CCDebugString ("C&C95 - Abandon packet received\n");
+			CCDebugString ("C&C95 - Abandon packet received\n");
 			Houses.Raw_Ptr(ID)->Abandon_Production(Data.Specific.Type);
 			break;
 
@@ -574,7 +577,7 @@ CCDebugString ("C&C95 - Abandon packet received\n");
 		**	Toggles the primary factory state of the specified building.
 		*/
 		case PRIMARY:{
-CCDebugString ("C&C95 - Primary building packet received\n");
+			CCDebugString ("C&C95 - Primary building packet received\n");
 				BuildingClass * building = As_Building(Data.Target.Whom);
 				if (building && building->IsActive) {
 					building->Toggle_Primary();
@@ -588,6 +591,7 @@ CCDebugString ("C&C95 - Primary building packet received\n");
 		**	and NavCom to the values specified.
 		*/
 		case MEGAMISSION:
+			CCDebugString("C&C95 - MEGAMISSION packet received\n");
 			techno = As_Techno(Data.MegaMission.Whom);
 			if (techno && techno->IsActive) {
 
@@ -664,6 +668,7 @@ CCDebugString ("C&C95 - Primary building packet received\n");
 		**	Request that the unit/infantry/aircraft go into idle mode.
 		*/
 		case IDLE:
+			CCDebugString("C&C95 - IDLE packet received\n");
 			techno = As_Techno(Data.Target.Whom);
 
 			if (techno && techno->IsActive && !techno->IsInLimbo && !techno->IsTethered) {
@@ -683,6 +688,7 @@ CCDebugString ("C&C95 - Primary building packet received\n");
 		**	Request that the unit/infantry/aircraft scatter from its current location.
 		*/
 		case SCATTER:
+			CCDebugString("C&C95 - SCATTER packet received\n");
 			techno = As_Techno(Data.Target.Whom);
 			if (techno && techno->IsActive && !techno->IsInLimbo && !techno->IsTethered) {
 				techno->Scatter(0, true);
@@ -694,7 +700,7 @@ CCDebugString ("C&C95 - Primary building packet received\n");
 		** care of it.
 		*/
 		case SPECIAL_PLACE:
-CCDebugString ("C&C95 - Special blast packet received\n");
+			CCDebugString ("C&C95 - Special blast packet received\n");
 			Houses.Raw_Ptr(ID)->Place_Special_Blast((SpecialWeaponType)Data.Special.ID, Data.Special.Cell);
 			break;
 
@@ -703,7 +709,7 @@ CCDebugString ("C&C95 - Special blast packet received\n");
 		** Give parting message while palette is fading to black.
 		*/
 		case EXIT:
-CCDebugString ("C&C95 - Exit game packet received\n");
+			CCDebugString ("C&C95 - Exit game packet received\n");
 			Theme.Queue_Song(THEME_NONE);
 			Stop_Speaking();
 			Speak(VOX_CONTROL_EXIT);
@@ -724,7 +730,7 @@ CCDebugString ("C&C95 - Exit game packet received\n");
 		**	Process the options Game Speed
 		*/
 		case GAMESPEED:
-CCDebugString ("C&C95 - Game speed packet received\n");
+			CCDebugString ("C&C95 - Game speed packet received\n");
 			Options.GameSpeed = Data.General.Value;
 			break;
 
@@ -796,6 +802,7 @@ CCDebugString (flip);
 			}
 			break;
 		case SET_RALLY:
+			CCDebugString("C&C95 - SET_RALLY packet received\n");
 			if (BuildingClass* const building = As_Building(Data.NavCom.Whom))
 			{
 				if (building->RallyPoint != Data.NavCom.Where)

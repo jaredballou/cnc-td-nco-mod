@@ -314,7 +314,6 @@ void SidebarClass::Init_IO(void)
 		Repair.Set_Shape(Hires_Retrieve("REPAIR.SHP"));
 #endif
 #endif
-
 		Upgrade.IsSticky = true;
 		Upgrade.ID = BUTTON_UPGRADE;
 		Upgrade.X = 480+57;
@@ -891,7 +890,6 @@ void SidebarClass::AI(KeyNumType & input, int x, int y)
 	if ((!IsRepairMode) && Repair.IsOn){
 		Repair.Turn_Off();
 	}
-
 	if ((!IsSellMode) && Upgrade.IsOn){
 		Upgrade.Turn_Off();
 	}

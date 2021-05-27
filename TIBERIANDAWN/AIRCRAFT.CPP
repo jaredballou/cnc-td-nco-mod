@@ -88,7 +88,7 @@
  * - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
 #include	"function.h"
-
+#include "LuaHooks.h"
 
 /*
 ** This contains the value of the Virtual Function Table Pointer
@@ -1614,6 +1614,7 @@ BulletClass * AircraftClass::Fire_At(TARGET target, int which)
  *=============================================================================================*/
 ResultType AircraftClass::Take_Damage(int & damage, int distance, WarheadType warhead, TechnoClass * source)
 {
+	HookEvent_ObjectTakeDamage(this, damage, distance, warhead, source);
 	Validate();
 	ResultType res = RESULT_NONE;
 

@@ -4248,7 +4248,6 @@ void DisplayClass::Repair_Mode_Control(int control)
 	}
 }
 
-
 /***********************************************************************************************
  * DisplayClass::In_View -- Determines if cell is visible on screen.                           *
  *                                                                                             *

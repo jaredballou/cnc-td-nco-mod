@@ -1189,6 +1189,7 @@ bool FootClass::Limbo(void)
  *=============================================================================================*/
 ResultType FootClass::Take_Damage(int & damage, int distance, WarheadType warhead, TechnoClass * source)
 {
+	//LogDebug("LUA HOOK FootClass::Take_Damage ininame %s id %u damage %u distance %u source %s", Class->IniName, Infantry.ID(this), damage, distance, source->Techno_Type_Class()->IniName);
 	ResultType result = TechnoClass::Take_Damage(damage, distance, warhead, source);
 
 	if (result != RESULT_NONE && Team) {

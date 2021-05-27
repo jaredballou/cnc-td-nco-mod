@@ -148,6 +148,7 @@ TerrainClass::~TerrainClass(void)
  *=============================================================================================*/
 ResultType TerrainClass::Take_Damage(int & damage, int distance, WarheadType warhead, TechnoClass * source)
 {
+	//LogDebug("LUA HOOK TerrainClass::Take_Damage");
 	Validate();
 	ResultType res = RESULT_NONE;
 
